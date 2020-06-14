@@ -65,8 +65,8 @@
     const probability = document.getElementById("probability");
 
     axios
-      //.get("http://127.0.0.1:5000/")
-      .get(" https://multi-armedbandit.herokuapp.com/")
+      .get("http://127.0.0.1:5000/")
+      //.get(" https://multi-armedbandit.herokuapp.com/")
       .then((res) => {
         console.log(res.data);
         content_id.innerHTML = "物件ID:" + res.data[0];
@@ -81,13 +81,14 @@
       console.log(content_id);
 
       axios
-        // .post(
-        //   `http://localhost:8888/ew-api/public/api/storeMultiArmedBanditLog`,
-        //   {
-        .post(`https://ewapi.enjoyworks.jp/api/storeMultiArmedBanditLog`, {
-          content_id: content_id,
-          action: "click",
-        })
+        .post(
+          `http://localhost:8888/ew-api/public/api/storeMultiArmedBanditLog`,
+          {
+            //.post(`https://ewapi.enjoyworks.jp/api/storeMultiArmedBanditLog`, {
+            content_id: content_id,
+            action: "click",
+          }
+        )
         .then((response) => {
           console.log("body:", response.data);
         });
