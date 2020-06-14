@@ -31,6 +31,7 @@
       <br />
 
       <div id="content_id"></div>
+      <div id="probability"></div>
       <p>↓インプレッションとCTRを元に各物件の確率を学習。表示回数が変わる。</p>
 
       <br />
@@ -61,16 +62,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
   <script>
     const content_id = document.getElementById("content_id");
+    const probability = document.getElementById("probability");
 
     axios
       //.get("http://127.0.0.1:5000/")
       .get(" https://multi-armedbandit.herokuapp.com/")
       .then((res) => {
         console.log(res.data);
-        content_id.innerHTML = "物件ID:" + res.data;
+        content_id.innerHTML = "物件ID:" + res.data[0];
+        probability.innerHTML = "確率:" + res.data[1];
+
         document.getElementById(
           "image"
-        ).innerHTML = `<img src ='img/${res.data}.jpg' width="600" onclick="addLog(${res.data})" style="cursor: hand; cursor:pointer;"> `;
+        ).innerHTML = `<img src ='img/${res.data[0]}.jpg' width="600" onclick="addLog(${res.data[0]})" style="cursor: hand; cursor:pointer;"> `;
       });
 
     function addLog(content_id) {
