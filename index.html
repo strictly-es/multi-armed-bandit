@@ -81,10 +81,9 @@
       console.log(content_id);
 
       axios
-        // .post(
-        //   `http://localhost:8888/ew-api/public/api/storeMultiArmedBanditLog`,
-        //   {
-        .post(`https://ewapi.enjoyworks.jp/api/storeMultiArmedBanditLog`, {
+        .post(
+          `http://localhost:8888/ew-api/public/api/storeMultiArmedBanditLog`,
+          {
           content_id: content_id,
           action: "click",
         })
